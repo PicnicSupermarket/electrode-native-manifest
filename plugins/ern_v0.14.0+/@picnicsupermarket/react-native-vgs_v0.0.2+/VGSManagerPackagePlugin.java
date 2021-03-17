@@ -17,16 +17,16 @@ import com.picnic.vgs.fields.OnCreateViewInstanceListener;
 public class RNFetchBlobPackagePlugin implements ReactPlugin {
     VGSCollectPackage collect = new VGSCollectPackage();
     OnCreateViewInstanceListener listener = collect.getListener();
-    CardNumberPackage number = new CardNumberPackage(listener);
     CardCVCPackage cvc = new CardCVCPackage(listener);
     CardExpirationPackage expiration = new CardExpirationPackage(listener);
+    CardNumberPackage number = new CardNumberPackage(listener);
 
     public ReactPackage hook(@NonNull Application application, @Nullable ReactPluginConfig config) {
         return Arrays.<ReactPackage>asList(
-            number,
-            cvc,
             collect,
-            expiration
+            cvc,
+            expiration,
+            number
         );
     }
 }
